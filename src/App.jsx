@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SolarSystemPage from "./components/solar-system-3d/SolarSystemPage";
 import Home from "./pages/Home";
+import { startBackendKeepAlive } from "./utils/keepBackendAlive";
 
 function App() {
+  useEffect(() => {
+    return startBackendKeepAlive();
+  }, []);
+
   return (
     <Router>
       <Routes>

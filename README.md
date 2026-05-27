@@ -133,6 +133,7 @@ Because `package.json` defines `"proxy": "http://localhost:8000"`, frontend requ
 Base URL (local): `http://127.0.0.1:8000`
 
 - `GET /` - API root with endpoint listing
+- `GET /api/health/` - lightweight health check for uptime monitors and warm-up pings
 - `GET /api/search/nasa/?q=<query>&limit=<n>&page=<p>` - NASA image search (with pagination)
 - `GET /api/nasa/image/<nasa_id>/` - NASA image details from cached results
 - `GET /api/search/popular/` - most popular search terms
@@ -149,6 +150,8 @@ Base URL (local): `http://127.0.0.1:8000`
 - CORS is currently fully open in development (`CORS_ALLOW_ALL_ORIGINS = True`).
 - Database defaults to SQLite (`db.sqlite3`) for local development.
 - NASA API key is currently configured in settings; for production, move secrets to environment variables.
+- The frontend pings `/api/health/` when the app loads and every 10 minutes by default. Override the interval with `REACT_APP_BACKEND_KEEP_ALIVE_MS`.
+- A scheduled GitHub Actions workflow also requests `/api/health/` every 10 minutes to help prevent first-visitor cold starts. It defaults to `https://exoris.onrender.com`; set the repository variable `BACKEND_BASE_URL` if the Render backend URL changes.
 
 ## Scripts
 

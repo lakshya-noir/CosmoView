@@ -1,12 +1,26 @@
 import os
 from django.conf import settings
 from django.http import FileResponse, Http404, JsonResponse
+from django.utils import timezone
 from rest_framework import viewsets, status
 from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from .models import Dataset, Annotation, ImageMetadata, TileCache
 from .serializers import DatasetSerializer, AnnotationSerializer, ImageMetadataSerializer, TileCacheSerializer
 from .nasa_services import NASADataFetcher
+
+
+@api_view(['GET'])
+def health_check(request):
+    """
+    Lightweight endpoint for uptime monitors and frontend warm-up pings.
+    GET /api/health/
+    """
+    return Response({
+        'status': 'ok',
+        'service': 'cosmoview-backend',
+        'timestamp': timezone.now().isoformat()
+    })
 
 
 @api_view(['GET'])
