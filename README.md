@@ -151,7 +151,7 @@ Base URL (local): `http://127.0.0.1:8000`
 - Database defaults to SQLite (`db.sqlite3`) for local development.
 - NASA API key is currently configured in settings; for production, move secrets to environment variables.
 - The frontend pings `/api/health/` when the app loads and every 10 minutes by default. Override the interval with `REACT_APP_BACKEND_KEEP_ALIVE_MS`.
-- A scheduled GitHub Actions workflow also requests `/api/health/` every 10 minutes to help prevent first-visitor cold starts. It defaults to `https://exoris.onrender.com`; set the repository variable `BACKEND_BASE_URL` if the Render backend URL changes.
+- A scheduled GitHub Actions workflow also requests `/api/health/` every 5 minutes to help prevent first-visitor cold starts. It defaults to `https://exoris.onrender.com`; set the repository variable `BACKEND_BASE_URL` if the Render backend URL changes.
 
 ## Scripts
 
