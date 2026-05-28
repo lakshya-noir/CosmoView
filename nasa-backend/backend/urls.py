@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from rest_framework import routers
 from api.views import DatasetViewSet, AnnotationViewSet, ImageMetadataViewSet, get_tile, search_features, nasa_apod, health_check
 from api.views import search_nasa_images, get_nasa_image_details, get_popular_searches
+from api.views import health
 
 def api_root(request):
     return JsonResponse({
@@ -37,6 +38,7 @@ urlpatterns = [
     path('api/health/', health_check, name='health_check'),
     path('api/search/', search_features, name='search_features'),
     path('api/nasa/apod/', nasa_apod, name='nasa_apod'),
+    path("health", health),
     re_path(r'^tiles/(?P<dataset>[-\w]+)/(?P<z>\d+)/(?P<x>\d+)/(?P<y>\d+)\.(?P<ext>png|jpg)$', 
             get_tile, name='get_tile'),
     path('api/search/nasa/', search_nasa_images, name='search_nasa_images'),

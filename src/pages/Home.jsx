@@ -259,12 +259,7 @@ const Home = () => {
         <Link className="home-nav-link" to="/solar-system">
           Solar System 3D
         </Link>
-        <a
-          className="home-nav-link"
-          href="/earth-3d/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="home-nav-link" href="/earth-3d/index.html">
           Earth 3D Model
         </a>
       </div>
@@ -283,6 +278,25 @@ const Home = () => {
           <SearchBar placeholder="Search celestial bodies..." onSearchActive={setIsSearchActive} />
         </div>
       </section>
+
+      {!isSearchActive && (
+        <section className="home-orbit-field" aria-hidden="true">
+          <div className="orbit-system">
+            <span className="orbit-ring orbit-ring-one" />
+            <span className="orbit-ring orbit-ring-two" />
+            <span className="orbit-ring orbit-ring-three" />
+            <span className="orbit-core" />
+            <span className="orbit-satellite orbit-satellite-one" />
+            <span className="orbit-satellite orbit-satellite-two" />
+            <span className="orbit-satellite orbit-satellite-three" />
+            <span className="orbit-scan orbit-scan-one" />
+            <span className="orbit-scan orbit-scan-two" />
+            <span className="constellation-line constellation-line-one" />
+            <span className="constellation-line constellation-line-two" />
+            <span className="constellation-line constellation-line-three" />
+          </div>
+        </section>
+      )}
     </main>
 
     {!isSearchActive && (

@@ -9,6 +9,14 @@ from .models import Dataset, Annotation, ImageMetadata, TileCache
 from .serializers import DatasetSerializer, AnnotationSerializer, ImageMetadataSerializer, TileCacheSerializer
 from .nasa_services import NASADataFetcher
 
+from django.http import JsonResponse, HttpResponse
+
+def health(request):
+    if request.method == "HEAD":
+        return HttpResponse(status=200)
+
+    return JsonResponse({"status": "ok"})
+
 
 @api_view(['GET'])
 def health_check(request):
